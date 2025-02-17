@@ -2,9 +2,10 @@
   <mat-card class="example-card" appearance="outlined">
     <mat-card-header>
       <mat-card-title>Assets</mat-card-title>
+      
     </mat-card-header>
     <mat-card-content>
-      <p> Here it will show the graphs for assets</p>
+      <div echarts [options]="chartOption" class="demo-chart"></div>
     </mat-card-content>
   </mat-card>
   <mat-card class="example-card" appearance="outlined">

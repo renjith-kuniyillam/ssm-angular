@@ -1,15 +1,12 @@
 
-<mat-toolbar>
+<mat-toolbar class="fixed-toolbar">
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon (click)="drawer.toggle()">menu</mat-icon>
     </button>
     <span>Siemens Security Monitor</span>
     
   </mat-toolbar>
-
-
-
-  <mat-drawer-container  (click)="drawer.close()" class="example-container" autosize>
+  <mat-drawer-container   (click)="drawer.close()" class="content-container" autosize>
     <mat-drawer  #drawer class="example-sidenav" mode="side">
         <p>Drawer content</p>
     </mat-drawer>

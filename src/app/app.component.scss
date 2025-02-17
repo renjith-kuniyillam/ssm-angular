@@ -1,7 +1,7 @@
-.example-container {
-  width: 100%;
-  height: 100%;
-}
+// .example-container {
+//   width: 100%;
+//   height: 100%;
+// }
 
 .example-sidenav-content {
   // display: flex;
@@ -12,4 +12,18 @@
 
 .example-sidenav {
   padding: 20px;
+}
+
+.fixed-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure the toolbar is above other content */
+}
+
+.content-container {
+  width: 100%;
+  height: 100%;
+  margin-top: 4rem; /* Adjust this value based on the height of your toolbar */
 }
