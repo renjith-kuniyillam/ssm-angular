@@ -1,21 +1,51 @@
-
 <mat-toolbar class="fixed-toolbar">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon (click)="drawer.toggle()">menu</mat-icon>
-    </button>
-    <span>Siemens Security Monitor</span>
-    
-  </mat-toolbar>
-  <mat-drawer-container   (click)="drawer.close()" class="content-container" autosize>
-    <mat-drawer  #drawer class="example-sidenav" mode="side">
-        <p>Drawer content</p>
-    </mat-drawer>
-  
-    <div class="example-sidenav-content">
-        <router-outlet></router-outlet>
-    </div>
-  
-  </mat-drawer-container>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon (click)="drawer.toggle()">menu</mat-icon>
+  </button>
+  <span class="siemens-logo">s</span>
+</mat-toolbar>
+<mat-drawer-container
+  (click)="drawer.close()"
+  class="content-container"
+  autosize
+>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <mat-tree
+      #tree
+      [dataSource]="navigationList"
+      [childrenAccessor]="childrenAccessor"
+    >
+      <mat-tree-node *matTreeNodeDef="let node">
+        <!-- use a disabled button to provide padding for tree leaf -->
+        <button mat-icon-button disabled></button>
+        {{ node.name }}
+      </mat-tree-node>
+      <!-- This is the tree node template for expandable nodes -->
+      <mat-tree-node
+        *matTreeNodeDef="let node; when: hasChild"
+        matTreeNodeToggle
+        [cdkTreeNodeTypeaheadLabel]="node.name"
+        class="custom-tree-node"
+      >
+        <button
+          mat-icon-button
+          matTreeNodeToggle
+          [attr.aria-label]="'Toggle ' + node.name"
+        >
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{ tree.isExpanded(node) ? "expand_more" : "chevron_right" }}
+          </mat-icon>
+        </button>
+        {{ node.name }}
+      </mat-tree-node>
+    </mat-tree>
+  </mat-drawer>
 
-
-
+  <div class="example-sidenav-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>
